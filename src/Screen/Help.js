@@ -7,7 +7,7 @@ class Help extends Component {
     render() {
         return (
             <Container>
-                <Header>
+                <Header style={{ backgroundColor: "rgb(6, 92, 81)" }} androidStatusBarColor="rgb(4, 77, 66)">
                     <Body>
                         <Title>Help</Title>
                     </Body>

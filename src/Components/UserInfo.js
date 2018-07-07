@@ -15,7 +15,7 @@ const UserInfo = (props) => {
                         <Badge success style={{ marginRight: 10 }} >
                             <Text style={{ fontSize: 14 }}>{"Poin : "+props.poin}</Text>
                         </Badge>
-                        <Badge success>
+                        <Badge style={{ backgroundColor: "rgb(46, 62, 78)"}} >
                             <Text style={{ fontSize: 14 }}>{"Saldo : Rp "+props.saldo}</Text>
                         </Badge>
                     </Row>

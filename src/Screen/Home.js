@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// import {  } from 'react-native';
-import { Container,Header,Card,Left,Right,Body,Title,Content,Text,Icon,Grid,Row,Col } from "native-base";
+import { TouchableOpacity, PermissionsAndroid } from 'react-native';
+import { Container, Header, Card, Left, Right, Body, Title, Content, Text, Icon, Grid, Row, Col } from "native-base";
 import UserInfo from "../Components/UserInfo";
 import Menu from "../Components/Menu";
 import MenuItem from "../Components/MenuItem";
@@ -9,16 +9,37 @@ import Slide from "../Components/Slide";
 
 class Home extends Component {
 
-    render(){
+    async requestLocation() {
+        try {
+            const granted = await PermissionsAndroid.request(
+                PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+                {
+                    'title': 'Akses Lokasi',
+                    'message': 'Aplikasi ini butuh akses lokasi'
+                }
+            )
+            if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+                console.log("allow")
+            } else {
+                console.log("denied")
+            }
+        } catch (err) {
+            return 0;
+        }
+    }
+
+    render() {
         return (
             <Container>
-                <Header>
-                        <Body>
-                            <Title>Home</Title>
-                        </Body>
-                        <Right>
-                            <Icon name="locate" style={{color : 'white'}} />
-                        </Right>
+                <Header style={{ backgroundColor: "rgb(6, 92, 81)" }} androidStatusBarColor="rgb(4, 77, 66)">
+                    <Body>
+                        <Title>Home</Title>
+                    </Body>
+                    <Right>
+                        <TouchableOpacity onPress={this.requestLocation.bind(this)} >
+                            <Icon name="locate" style={{ color: 'white' }} />
+                        </TouchableOpacity>
+                    </Right>
                 </Header>
                 <Content>
                     <UserInfo image="https://picsum.photos/80/80" saldo="50.000" poin="5" name="Nursan amar" />
@@ -39,7 +60,7 @@ class Home extends Component {
                         <MenuItem height={250} />
                         <MenuItem height={250} />
                         <MenuItem height={250} />
-                        <MenuItem height={250} />                    
+                        <MenuItem height={250} />
                     </Slide>
                 </Content>
             </Container>
