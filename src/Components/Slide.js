@@ -14,7 +14,7 @@ const Slide = (props) => {
                 </Right>
             </CardItem>
             <CardItem>
-                <Swiper height={300} >
+                <Swiper height={300} showsPagination={false} autoplayTimeout={1} >
                     {props.children}
                 </Swiper>
             </CardItem>
