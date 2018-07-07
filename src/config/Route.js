@@ -3,11 +3,14 @@ import { createBottomTabNavigator } from "react-navigation";
 import Home from "../Screen/Home";
 import Order from "../Screen/Order";
 import { Icon } from "native-base";
-
+import Help from "../Screen/Help";
+import Account from "../Screen/Account";
 
 export const HomeStack = createBottomTabNavigator({
     home : Home,
-    order : Order
+    order : Order,
+    help : Help,
+    akun : Account
 },{
         navigationOptions: ({ navigation }) => ({
             tabBarIcon: ({ focused, tintColor }) => {
@@ -17,6 +20,10 @@ export const HomeStack = createBottomTabNavigator({
                     iconName = `people`;
                 } else if (routeName === 'order') {
                     iconName = `heart`;
+                } else if (routeName === 'help') {
+                    iconName = `help-circle`;
+                } else if (routeName === 'akun') {
+                    iconName = `person`;
                 }
 
                 // You can return any component that you like here! We usually use an
