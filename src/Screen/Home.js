@@ -5,9 +5,14 @@ import UserInfo from "../Components/UserInfo";
 import Menu from "../Components/Menu";
 import MenuItem from "../Components/MenuItem";
 import Slide from "../Components/Slide";
+import { connect } from 'react-redux'
 
 
 class Home extends Component {
+
+    constructor(props){
+        super(props);
+    }
 
     async requestLocation() {
         try {
@@ -28,7 +33,7 @@ class Home extends Component {
         }
     }
 
-    render() {
+    render() {  
         return (
             <Container>
                 <Header style={{ backgroundColor: "rgb(6, 92, 81)" }} androidStatusBarColor="rgb(4, 77, 66)">
@@ -42,7 +47,9 @@ class Home extends Component {
                     </Right>
                 </Header>
                 <Content>
-                    <UserInfo image="https://picsum.photos/80/80" saldo="50.000" poin="5" name="Nursan amar" />
+                    {
+                        this.props.isLogin ? <UserInfo image="https://picsum.photos/80/80" saldo={this.props.user.saldo} poin={this.props.user.point} name={this.props.user.name} /> : null
+                    }
                     <Menu>
                         <Grid>
                             <Row>
@@ -69,4 +76,12 @@ class Home extends Component {
 
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+    return {
+        isLogin : state.isLogin,
+        user : state.user
+    }
+}
+
+
+export default connect(mapStateToProps)(Home);

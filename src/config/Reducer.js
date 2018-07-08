@@ -15,12 +15,21 @@ export function reducer(state = initialState,action) {
         case 'login':
                 return {
                     isLogin: true,
-                    user : {
-                        ...state.user
+                    user : action.data
+                }
+            break;
+        case 'logout':
+                return {
+                    isLogin: false,
+                    user: {
+                        id: null,
+                        name: null,
+                        foto: null,
+                        saldo: null,
+                        point: null,
                     }
                 }
             break;
-    
         default:
                 return state;
             break;

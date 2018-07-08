@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardItem, Form, Input, Item, Label, Button, Text,Body,Right,Left } from "native-base";
+import { Card, CardItem, Form, Input, Item, Label, Button, Text,Body,Right,Left,Spinner } from "native-base";
 
 
 class LoginForm extends Component {
@@ -44,7 +44,9 @@ class LoginForm extends Component {
                     <Right/>
                     <Body>
                         <Button onPress={this.submit} full >
-                            <Text>Login</Text>
+                            {
+                                this.props.isLoading ? <Spinner /> : <Text>Login</Text>
+                            }
                         </Button>
                     </Body>
                     <Left/>

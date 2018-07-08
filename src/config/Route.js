@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
-import { createBottomTabNavigator } from "react-navigation";
+import { createBottomTabNavigator,createStackNavigator } from "react-navigation";
 import Home from "../Screen/Home";
 import Order from "../Screen/Order";
 import { Icon } from "native-base";
 import Help from "../Screen/Help";
 import Account from "../Screen/Account";
+import Register from "../Screen/Register";
+
+export const AccountStack = createStackNavigator({
+    login : Account,
+    register: Register
+},{
+    headerMode : "none"
+})
 
 export const HomeStack = createBottomTabNavigator({
     home : Home,
     order : Order,
     help : Help,
-    akun : Account
+    akun : AccountStack
 },{
         navigationOptions: ({ navigation }) => ({
             tabBarIcon: ({ focused, tintColor }) => {

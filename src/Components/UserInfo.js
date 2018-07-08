@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card,CardItem,Text,Grid,Col,Row,Thumbnail,Badge, Left, Right } from "native-base";
+import { Card, CardItem, Text, Grid, Col, Row, Thumbnail, Badge, Left, Right } from "native-base";
 
 
 const UserInfo = (props) => {
@@ -13,10 +13,10 @@ const UserInfo = (props) => {
                     </Row>
                     <Row>
                         <Badge success style={{ marginRight: 10 }} >
-                            <Text style={{ fontSize: 14 }}>{"Poin : "+props.poin}</Text>
+                            <Text style={{ fontSize: 14 }}>{"Poin : " + props.poin.toLocaleString('id-ID')}</Text>
                         </Badge>
-                        <Badge style={{ backgroundColor: "rgb(46, 62, 78)"}} >
-                            <Text style={{ fontSize: 14 }}>{"Saldo : Rp "+props.saldo}</Text>
+                        <Badge style={{ backgroundColor: "rgb(46, 62, 78)" }} >
+                            <Text style={{ fontSize: 14 }}>{"Saldo : Rp " + props.saldo.toLocaleString('id-ID')}</Text>
                         </Badge>
                     </Row>
                 </Grid>

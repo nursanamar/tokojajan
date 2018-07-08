@@ -9,33 +9,38 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  AsyncStorage
 } from 'react-native';
 import { HomeStack } from "./src/config/Route";
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import { reducer } from "./src/config/Reducer";
+
+const store = createStore(reducer);
 
 export default class App extends Component {
+
+  componentWillMount(){
+    try {
+      AsyncStorage.getItem('isLogin').done((isLogin) => {
+        if(isLogin == 'true' || isLogin == 1){
+          AsyncStorage.getItem('user').done((user) => {
+            let data = JSON.parse(user);
+            store.dispatch({type : 'login',data : data});
+          })
+        }
+      })
+    } catch (error) {
+      
+    }
+  }
+
   render() {
     return (
-      <HomeStack />
+      <Provider store={store} >
+        <HomeStack />
+      </Provider>
     );
   }
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     backgroundColor: '#F5FCFF',
-//   },
-//   welcome: {
-//     fontSize: 20,
-//     textAlign: 'center',
-//     margin: 10,
-//   },
-//   instructions: {
-//     textAlign: 'center',
-//     color: '#333333',
-//     marginBottom: 5,
-//   },
-// });
