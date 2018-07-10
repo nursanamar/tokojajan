@@ -6,6 +6,7 @@ import { Icon } from "native-base";
 import Help from "../Screen/Help";
 import Account from "../Screen/Account";
 import Register from "../Screen/Register";
+import Invoice from "../Screen/Invoice";
 
 export const AccountStack = createStackNavigator({
     login : Account,
@@ -14,9 +15,16 @@ export const AccountStack = createStackNavigator({
     headerMode : "none"
 })
 
+export const OrderStack = createStackNavigator({
+    orderList : Order,
+    invoice : Invoice
+},{
+    headerMode : 'none'
+})
+
 export const HomeStack = createBottomTabNavigator({
     home : Home,
-    order : Order,
+    order : OrderStack,
     help : Help,
     akun : AccountStack
 },{
