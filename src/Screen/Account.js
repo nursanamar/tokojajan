@@ -69,7 +69,11 @@ class Account extends Component {
                             </Col>
                         </Row>
                         <Row>
-
+                            <Col>
+                                {
+                                    !(this.props.isLogin) && <Button success onPress={() => { this.props.navigation.navigate('register')}} full ><Text>Daftar</Text></Button>
+                                }
+                            </Col>
                         </Row>
                     </Grid>
                 </Content>
