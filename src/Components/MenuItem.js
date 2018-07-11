@@ -6,11 +6,11 @@ const MenuItem = (props) => {
     return (
         <Card>
             <CardItem cardBody>
-                <Thumbnail square source={{ uri: "https://picsum.photos/150/200"}} style={{height:props.height,width:null,flex:1}} />
+                <Thumbnail square source={{ uri: props.image}} style={{height:props.height,width:null,flex:1}} />
             </CardItem>
             <CardItem>
                 <Body>
-                    <Text>Judul</Text>
+                    <Text>{props.judul}</Text>
                 </Body>
             </CardItem>
         </Card>

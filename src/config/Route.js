@@ -7,6 +7,7 @@ import Help from "../Screen/Help";
 import Account from "../Screen/Account";
 import Register from "../Screen/Register";
 import Invoice from "../Screen/Invoice";
+import Menu from "../Screen/Menu";
 
 export const AccountStack = createStackNavigator({
     login : Account,
@@ -22,8 +23,15 @@ export const OrderStack = createStackNavigator({
     headerMode : 'none'
 })
 
+export const MenuStack = createStackNavigator({
+    front : Home,
+    menu : Menu
+},{
+    headerMode : 'none'
+})
+
 export const HomeStack = createBottomTabNavigator({
-    home : Home,
+    home : MenuStack,
     order : OrderStack,
     help : Help,
     akun : AccountStack

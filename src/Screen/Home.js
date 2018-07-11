@@ -10,7 +10,7 @@ import { connect } from 'react-redux'
 
 class Home extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
     }
 
@@ -33,7 +33,33 @@ class Home extends Component {
         }
     }
 
-    render() {  
+    openMenu = (url) => {
+        this.props.navigation.navigate('menu', { url: url });
+    }
+
+    render() {
+        let menu = [
+            {
+                name: 'MoTop up',
+                image: "https://picsum.photos/150/200",
+                url: "https://tokojajan.com/app/top-up"
+            },
+            {
+                name: 'MoPulsa',
+                image: "https://picsum.photos/150/200",
+                url: "https://tokojajan.com/app/pulsa"
+            },
+            {
+                name: 'MoBelanja',
+                image: "https://picsum.photos/150/200",
+                url: "https://tokojajan.com/app/mart"
+            },
+            {
+                name: 'MoFood',
+                image: "https://picsum.photos/150/200",
+                url: "https://tokojajan.com/app/food"
+            }
+        ]
         return (
             <Container>
                 <Header style={{ backgroundColor: "rgb(6, 92, 81)" }} androidStatusBarColor="rgb(4, 77, 66)">
@@ -48,26 +74,65 @@ class Home extends Component {
                 </Header>
                 <Content>
                     {
-                        this.props.isLogin ? <UserInfo image={"https://tokojajan.com/static/upload/"+this.props.user.foto} saldo={this.props.user.saldo} poin={this.props.user.point} name={this.props.user.name} /> : null
+                        this.props.isLogin ? <UserInfo image={"https://tokojajan.com/static/upload/" + this.props.user.foto} saldo={this.props.user.saldo} poin={this.props.user.point} name={this.props.user.name} /> : null
                     }
                     <Menu>
                         <Grid>
                             <Row>
                                 <Col>
-                                    <MenuItem height={150} />
+                                    <TouchableOpacity onPress={() => {
+                                        this.openMenu('https://tokojajan.com/app/top-up')
+                                    }} >
+                                        <MenuItem image="https://picsum.photos/150/200" judul='MoTop Up' height={150} />
+                                    </TouchableOpacity>
                                 </Col>
                                 <Col>
-                                    <MenuItem height={150} />
+                                    <TouchableOpacity onPress={() => {
+                                        this.openMenu('https://tokojajan.com/app/pulsa')
+                                    }} >
+                                        <MenuItem image="https://picsum.photos/150/200" judul='MoPulsa' height={150} />
+                                    </TouchableOpacity>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <TouchableOpacity onPress={() => {
+                                        this.openMenu('https://tokojajan.com/app/mart')
+                                    }} >
+                                        <MenuItem image="https://picsum.photos/150/200" judul='MoBelanja' height={150} />
+                                    </TouchableOpacity>
+                                </Col>
+                                <Col>
+                                    <TouchableOpacity onPress={() => {
+                                        this.openMenu('https://tokojajan.com/app/food')
+                                    }} >
+                                        <MenuItem image="https://picsum.photos/150/200" judul="MoFood" height={150} />
+                                    </TouchableOpacity>
                                 </Col>
                             </Row>
                         </Grid>
                     </Menu>
                     <Slide>
-                        <MenuItem height={250} />
-                        <MenuItem height={250} />
-                        <MenuItem height={250} />
-                        <MenuItem height={250} />
-                        <MenuItem height={250} />
+                        <TouchableOpacity style={{height:300}} onPress={() => {
+                            this.openMenu('https://tokojajan.com/app/top-up')
+                        }} >
+                            <MenuItem image="https://picsum.photos/150/200" judul='MoTop Up' height={250} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{height:300}} onPress={() => {
+                            this.openMenu('https://tokojajan.com/app/pulsa')
+                        }} >
+                            <MenuItem image="https://picsum.photos/150/200" judul='MoPulsa' height={250} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{height:300}} onPress={() => {
+                            this.openMenu('https://tokojajan.com/app/mart')
+                        }} >
+                            <MenuItem image="https://picsum.photos/150/200" judul='MoBelanja' height={250} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{height:300}} onPress={() => {
+                            this.openMenu('https://tokojajan.com/app/food')
+                        }} >
+                            <MenuItem image="https://picsum.photos/150/200" judul="MoFood" height={250} />
+                        </TouchableOpacity>
                     </Slide>
                 </Content>
             </Container>
@@ -78,8 +143,8 @@ class Home extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        isLogin : state.isLogin,
-        user : state.user
+        isLogin: state.isLogin,
+        user: state.user
     }
 }
 
