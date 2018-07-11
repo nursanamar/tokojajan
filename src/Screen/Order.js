@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import {  } from 'react-native';
 import { Button,Container, Header, Card, Left, Right, Body, Title, Content, Text } from "native-base";
 import OrderList from "./OrderList";
+import { connect } from "react-redux";
 
 class Order extends Component {
 
@@ -11,12 +12,10 @@ class Order extends Component {
     }
 
     invoice = (no) => {
-        console.log(this.props.navigation.navigate('invoice', { no: no }));
-        
+        this.props.navigation.navigate('invoice', { no: no });
     }
 
     render() {
-        let isLogin = true;
         return (
             <Container>
                 <Header style={{ backgroundColor: "rgb(6, 92, 81)" }} androidStatusBarColor="rgb(4, 77, 66)">
@@ -26,7 +25,7 @@ class Order extends Component {
                 </Header>
                 <Content>
                     {
-                        isLogin ? <OrderList navigate={this.invoice} /> : <Text>Anda harus login untuk melihat order</Text>
+                        this.props.isLogin ? <OrderList navigate={this.invoice} /> : <Text>Anda harus login untuk melihat order</Text>
                     }
                 </Content>
             </Container>
@@ -35,4 +34,10 @@ class Order extends Component {
 
 }
 
-export default Order;
+const mapStateToProps = (state) => {
+    return {
+        isLogin: state.isLogin
+    }
+}
+
+export default connect(mapStateToProps)(Order);
