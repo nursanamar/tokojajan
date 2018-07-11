@@ -19,3 +19,16 @@ export function login(emai,pass,deviceToken,callback = () => {}) {
         callback(json);
     })
 }
+
+export function orderList(token,id,callback = () => {}){
+    fetch(url +"/Merchant/getListOrderMerchant?start=5&traveler_id="+id,{
+        method : "GET",
+        headers: {
+            "authorization": "Bearer "+token,
+        }
+    }).then((res) => {
+        return res.json()
+    }).then((json) => {
+        callback(json)
+    })
+}

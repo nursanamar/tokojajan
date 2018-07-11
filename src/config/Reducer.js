@@ -7,6 +7,7 @@ const initialState = {
         foto: null,
         saldo: null,
         point: null,
+        token : null
     }
 }
 

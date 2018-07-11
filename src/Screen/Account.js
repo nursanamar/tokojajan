@@ -19,6 +19,8 @@ class Account extends Component {
             isLoading : true
         })
         this.props.dispatch({type : 'logout'});
+        AsyncStorage.removeItem('isLogin');
+        AsyncStorage.removeItem('user');
         this.setState({
             isLoading : false
         })
@@ -35,8 +37,11 @@ class Account extends Component {
                 foto: json.data.thumbnail,
                 saldo: json.saldo.saldo,
                 point: json.saldo.bagi_hasil,
+                token : json.token
             }
             this.props.dispatch({ type : "login",data : data });
+            AsyncStorage.setItem('isLogin','true');
+            AsyncStorage.setItem('user',JSON.stringify(data));
             this.setState({
                 isLoading : false
             })

@@ -48,7 +48,7 @@ class Home extends Component {
                 </Header>
                 <Content>
                     {
-                        this.props.isLogin ? <UserInfo image="https://picsum.photos/80/80" saldo={this.props.user.saldo} poin={this.props.user.point} name={this.props.user.name} /> : null
+                        this.props.isLogin ? <UserInfo image={"https://tokojajan.com/static/upload/"+this.props.user.foto} saldo={this.props.user.saldo} poin={this.props.user.point} name={this.props.user.name} /> : null
                     }
                     <Menu>
                         <Grid>

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { TouchableOpacity } from 'react-native';
-import { Container, Header, Card, Left, Right, Body, Title, Content, Text } from "native-base";
+import { Spinner,Container, Header, Card, Left, Right, Body, Title, Content, Text } from "native-base";
 import OrderItem from "../Components/OrderItem";
-import { orderList } from "../../exampleData";
+import { connect } from "react-redux";
+import { orderList } from "../config/Api";
 import { createStackNavigator } from "react-navigation";
 
 
@@ -10,10 +11,24 @@ class OrderList extends Component {
 
     constructor(props){
         super(props);
+        this.state = {
+            data : [],
+            isLoading : true,
+        }
+    }
+
+    componentDidMount(){
+        orderList(this.props.token,this.props.userId,(data) => {
+            console.log(data);
+            this.setState({
+                data : data,
+                isLoading : false
+            })
+        })
     }
 
     render() {
-        let datum = orderList;
+        let datum = this.state.data;
         let list = [];
         datum.forEach((data,key) => {
             list.push(
@@ -24,11 +39,18 @@ class OrderList extends Component {
         })
         return (
             <Card>
-                {list}
+                {this.state.isLoading ? <Spinner /> : list}
             </Card>
         );
     }
 
 }
 
-export default OrderList;
+const mapStateToProps = (state) => {
+    return {
+        token : state.user.token,
+        userId : state.user.id
+    }
+}
+
+export default connect(mapStateToProps)(OrderList);
