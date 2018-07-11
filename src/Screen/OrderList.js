@@ -19,7 +19,6 @@ class OrderList extends Component {
 
     componentDidMount(){
         orderList(this.props.token,this.props.userId,(data) => {
-            console.log(data);
             this.setState({
                 data : data,
                 isLoading : false
