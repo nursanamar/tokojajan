@@ -4,6 +4,8 @@ import { Container, Header, Card, Left, Right, Body, Title, Content, Text,Grid,R
 import LoginForm from "../Components/LoginForm";
 import { connect } from "react-redux";
 import { login } from "../config/Api";
+import firebase from "react-native-firebase";
+
 
 class Account extends Component {
 
@@ -30,22 +32,25 @@ class Account extends Component {
         this.setState({
             isLoading : true
         })
-        login(email,pass,"",(json) => {
-            let data = {
-                id : json.data.id,
-                name : json.data.first_name,
-                foto: json.data.thumbnail,
-                saldo: json.saldo.saldo,
-                point: json.saldo.bagi_hasil,
-                token : json.token
-            }
-            this.props.dispatch({ type : "login",data : data });
-            AsyncStorage.setItem('isLogin','true');
-            AsyncStorage.setItem('user',JSON.stringify(data));
-            this.setState({
-                isLoading : false
-            })
-        })
+        firebase.messaging().getToken()
+            .then(fcmToken => {
+                login(email, pass,fcmToken, (json) => {
+                    let data = {
+                        id: json.data.id,
+                        name: json.data.first_name,
+                        foto: json.data.thumbnail,
+                        saldo: json.saldo.saldo,
+                        point: json.saldo.bagi_hasil,
+                        token: json.token
+                    }
+                    this.props.dispatch({ type: "login", data: data });
+                    AsyncStorage.setItem('isLogin', 'true');
+                    AsyncStorage.setItem('user', JSON.stringify(data));
+                    this.setState({
+                        isLoading: false
+                    })
+                })
+            });
     }
 
     render() {
