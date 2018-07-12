@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "576810455325",
+    "firebase_url": "https://toko-jajam-merchant.firebaseio.com",
+    "project_id": "toko-jajam-merchant",
+    "storage_bucket": "toko-jajam-merchant.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:576810455325:android:bfbf97291e80e4ad",
+        "android_client_info": {
+          "package_name": "com.order"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "576810455325-g64dkbjo0uvl0uet9uvc7grgqv0392jf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdcvPjSOfyj2f62eru6BhBe8lyFfv3df4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:576810455325:android:bcdb74b310c78b3f",
+        "android_client_info": {
+          "package_name": "com.toko.jajan.merchant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "576810455325-g64dkbjo0uvl0uet9uvc7grgqv0392jf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdcvPjSOfyj2f62eru6BhBe8lyFfv3df4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
