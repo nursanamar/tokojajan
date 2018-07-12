@@ -16,6 +16,8 @@ import { HomeStack } from "./src/config/Route";
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { reducer } from "./src/config/Reducer";
+import firebase from "react-native-firebase";
+
 
 const store = createStore(reducer);
 
@@ -34,7 +36,16 @@ export default class App extends Component {
     } catch (error) {
       
     }
+    firebase.messaging().getToken()
+      .then(fcmToken => {
+        if (fcmToken) {
+          console.log(fcmToken)
+        } else {
+          // user doesn't have a device token yet
+        }
+      });
   }
+  
 
   render() {
     return (
