@@ -1,6 +1,6 @@
 
 
-var url = "http://moapa.xyz/tokojajan/api";
+var url = "http://tokojajan.com/tokojajan/api";
 
 export function login(emai,pass,deviceToken,callback = () => {}) {
     fetch(url+"/auth/login",{
