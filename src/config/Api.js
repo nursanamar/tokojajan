@@ -11,7 +11,7 @@ export function login(emai,pass,deviceToken,callback = () => {}) {
         body : JSON.stringify({
             email : emai,
             password : pass,
-            device_token : deviceToken
+            token_device : deviceToken
         })
     }).then((res) => {
         return res.json();
